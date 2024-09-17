@@ -8,9 +8,9 @@ hashcat brain was released with hashcat v5.0.0 and is described if a [forum post
 
 ## Getting the Docker image
 
-You can grab the built docker image directly from [docker hub](https://hub.docker.com/r/singelet/hashcat-brain) with the command:
+You can grab the built docker image with the command:
 ```
-docker pull singelet/hashcat-brain:latest
+docker pull ghcr.io/double16/hashcat-brain:latest
 ```
 
 Or you can build it yourself by cloning this repository then:
@@ -21,7 +21,7 @@ docker build . -t hashcat-brain
 ## Running it
 
 ```
-docker run -p 6863 singelet/hashcat-brain:latest
+docker run -p 6863 -v ./hashcat-brain:/home/hashcat/.local/share/hashcat ghcr.io/double16/hashcat-brain:latest
 ```
 
 When run, you should see output similar to the following, keep note of the password:
@@ -40,7 +40,7 @@ Notice the password sent to the client is the same as that given when the brain 
 
 hashcat's brain config is done via the command line, and these can just be passed as arguments to the docker container. For example to whitelist specific sessions:
 ```
-docker run -p 6863 singelet/hashcat-brain:latest --brain-session-whitelist=0x2ae611db
+docker run -p 6863 ghcr.io/double16/hashcat-brain:latest --brain-session-whitelist=0x2ae611db
 ```
 
 ## Brain Wrapper Explained
@@ -56,4 +56,4 @@ hashcat --brain-client --brain-host <IP> --brain-port <port> --brain-password <p
 
 ## hashcat version tracking
 
-I've chosen to try keep up to date with HEAD of the [main hashcat repo](https://github.com/hashcat/hashcat). Invariably I won't be as up-to-date as them. You can see which commit I'm at from the "commit" ARG in the Dockerfile. And if you want to build you own for a different commit, just change that.
+Update the `version` ARG in the Dockerfile to chose a version.
