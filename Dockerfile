@@ -26,6 +26,7 @@ COPY --from=builder /hashcat/hashcat /hashcat/OpenCL /hashcat/
 ENV PATH $PATH:/hashcat
 EXPOSE 6863
 USER hashcat
+WORKDIR /home/hashcat/
 RUN mkdir -p /home/hashcat/.local/share/hashcat
 VOLUME /home/hashcat/.local/share/hashcat
 ENTRYPOINT [ "/hashcat/hashcat", "--brain-server", "--brain-port", "6863" ]
