@@ -21,7 +21,7 @@ docker build . -t hashcat-brain
 ## Running it
 
 ```
-docker run -p 6863 -v ./hashcat-brain:/home/hashcat/.local/share/hashcat ghcr.io/double16/hashcat-brain:latest
+docker run -p 6863 -v ./hashcat-brain:/home/hashcat ghcr.io/double16/hashcat-brain:latest
 ```
 
 When run, you should see output similar to the following, keep note of the password:
